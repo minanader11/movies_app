@@ -1,13 +1,6 @@
 
-
-
-
-
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-
-
 import 'package:movies_routee/core/api_constants.dart';
 import 'package:movies_routee/core/model/movie.dart';
 class ApiService{
