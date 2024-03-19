@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_routee/core/MyTheme.dart';
-import 'package:movies_routee/features/browse/browse_tab.dart';
+import 'package:movies_routee/features/browse/view/presentation/browse_tab.dart';
 import 'package:movies_routee/features/home/home_tab.dart';
 import 'package:movies_routee/features/search/search_tab.dart';
 import 'package:movies_routee/features/watchlist/watchlist_tab.dart';
