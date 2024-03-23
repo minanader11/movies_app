@@ -16,7 +16,7 @@ class ApiService{
       var movies = Movie.fromJson(data);
       return movies;
     } catch (e){
-      throw e;
+      rethrow;
     }
   }
   static Future<MovieCategory> getGenres() async {
@@ -29,7 +29,7 @@ class ApiService{
       var movieCategory = MovieCategory.fromJson(data);
       return movieCategory;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
   static Future<Movie> getMoviesByCategory(int id) async {
@@ -45,7 +45,28 @@ class ApiService{
       var movies = Movie.fromJson(data);
       return movies;
     } catch (e) {
-      throw e;
+      rethrow;
+    }
+  }
+  static Future<Movie> getSearchResults(String query) async {
+    Uri url = Uri.https(ApiConstants.baseURl, ApiConstants.search,
+    {
+      'query' : query
+    }
+    );
+
+    try {
+      var response = await http
+          .get(url,
+          headers: {'Authorization': ApiConstants.authorization},
+
+
+      );
+      var data = jsonDecode(response.body);
+      var results = Movie.fromJson(data);
+      return results;
+    } catch (e) {
+      rethrow;
     }
   }
 }

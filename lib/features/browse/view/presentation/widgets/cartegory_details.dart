@@ -26,17 +26,17 @@ class CategoryDetails extends StatelessWidget {
         future: ApiService.getMoviesByCategory(category.genres![index].id!),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
             return Column(children: [
-              Text('Something went wrong'),
+              const Text('Something went wrong'),
               ElevatedButton(
                   onPressed: () {
                     ApiService.getMoviesByCategory(category.genres![index].id!);
                   },
-                  child: Text('Try again'))
+                  child: const Text('Try again'))
             ]);
           } else if (snapshot.data!.success == false) {
             return Column(children: [
@@ -45,14 +45,14 @@ class CategoryDetails extends StatelessWidget {
                   onPressed: () {
                     ApiService.getMoviesByCategory(category.genres![index].id!);
                   },
-                  child: Text('Try again'))
+                  child: const Text('Try again'))
             ]);
           }
           var movies = snapshot.data!.results;
           return Container(
             child: ListView.separated(
-              separatorBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.all(8.0),
+              separatorBuilder: (context, index) => const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Divider(color: MyTheme.grayColor, height: 1),
               ),
               scrollDirection: Axis.vertical,

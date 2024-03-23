@@ -7,7 +7,7 @@ import 'package:movies_routee/core/api_constants.dart';
 import 'package:movies_routee/core/model/movie.dart';
 
 class CategoryMovieItem extends StatelessWidget {
-  CategoryMovieItem({required this.movie});
+  CategoryMovieItem({super.key, required this.movie});
 
   Result movie;
 
@@ -38,13 +38,13 @@ class CategoryMovieItem extends StatelessWidget {
               width: width * 0.35,
               imageUrl: imagePath,
               placeholder: (context, url) =>
-                  Center(child: const CircularProgressIndicator()),
+                  const Center(child: CircularProgressIndicator()),
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
           //Image.asset(
           //    'assets/images/movie.jpeg'),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Expanded(
@@ -53,7 +53,7 @@ class CategoryMovieItem extends StatelessWidget {
               children: [
                 Text(movie.title ?? '',
                     style: Theme.of(context).textTheme.bodyLarge),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(movie.releaseDate ?? '',
@@ -61,18 +61,18 @@ class CategoryMovieItem extends StatelessWidget {
                         .textTheme
                         .bodyLarge!
                         .copyWith(color: MyTheme.grayColor)),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.star_purple500_outlined,
                       color: MyTheme.goldColor,
                       size: 30,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 4,
                     ),
                     Text(

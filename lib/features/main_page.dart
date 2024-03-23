@@ -8,6 +8,8 @@ import 'package:movies_routee/features/watchlist/watchlist_tab.dart';
 class MainPage extends StatefulWidget {
   static const String routeName='MainPage';
 
+  const MainPage({super.key});
+
   @override
   State<MainPage> createState() => _MainPageState();
 }
@@ -17,7 +19,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> tabs=[HomeTab(),SearchTab(),BrowseTab(),WatchlistTab()];
+    List<Widget> tabs=[const HomeTab(),const SearchTab(),const BrowseTab(),const WatchlistTab()];
     return Scaffold(
       bottomNavigationBar: Theme(data: Theme.of(context).copyWith(canvasColor: MyTheme.blackColor),
         child: BottomNavigationBar(currentIndex: selectedIndex,onTap: (value){
@@ -28,17 +30,17 @@ class _MainPageState extends State<MainPage> {
           });
 
         } ,items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'HOME'
 
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.search),
               label: 'SEARCH'
 
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Icon(Icons.movie),
               label: 'BROWSE'
           ),

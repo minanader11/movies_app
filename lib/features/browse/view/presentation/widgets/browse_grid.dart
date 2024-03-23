@@ -12,17 +12,17 @@ class BrowseGrid extends StatelessWidget {
       future: ApiService.getGenres(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         } else if (snapshot.hasError) {
           return Column(children: [
-            Text('Something went wrong'),
+            const Text('Something went wrong'),
             ElevatedButton(
                 onPressed: () {
                   ApiService.getGenres();
                 },
-                child: Text('Try again'))
+                child: const Text('Try again'))
           ]);
         } else if (snapshot.data!.success == false) {
           return Column(children: [
@@ -31,14 +31,14 @@ class BrowseGrid extends StatelessWidget {
                 onPressed: () {
                   ApiService.getGenres();
                 },
-                child: Text('Try again'))
+                child: const Text('Try again'))
           ]);
         }
         var genre = snapshot.data;
 
         return Container(
 
-          child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 10,mainAxisSpacing: 10),
+          child: GridView.builder(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 10,mainAxisSpacing: 10),
 
             scrollDirection: Axis.vertical,
             itemCount: genre!.genres!.length,

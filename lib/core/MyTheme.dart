@@ -7,15 +7,16 @@ class MyTheme {
   static const Color whiteColor = Color(0xffFFFFFF);
   static const Color darkGray = Color(0xff282A28);
   static const Color appBarColor = Color(0xff1D1E1D);
+  static const Color searchBarColor = Color(0xff514F4F);
 
   static ThemeData theme = ThemeData(
     scaffoldBackgroundColor: blackColor,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
         color: appBarColor,
         titleTextStyle: TextStyle(color: whiteColor,fontSize: 20),
         actionsIconTheme: IconThemeData(color: whiteColor),
         iconTheme: IconThemeData(color: whiteColor)),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         showUnselectedLabels: true,
         backgroundColor: blackColor,
         selectedItemColor: goldColor,
@@ -25,7 +26,7 @@ class MyTheme {
         ),
         selectedLabelStyle: TextStyle(fontSize: 8),
         unselectedLabelStyle: TextStyle(fontSize: 8)),
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       bodyMedium: TextStyle(
         fontSize: 15,
         fontWeight: FontWeight.bold,
