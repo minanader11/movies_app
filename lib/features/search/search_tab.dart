@@ -1,7 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:movies_routee/core/MyTheme.dart';
 import 'package:movies_routee/core/api_service.dart';
+import 'package:movies_routee/core/firebase_utils.dart';
 import 'package:movies_routee/features/browse/view/presentation/widgets/CategoryMovieItem.dart';
 
 class SearchTab extends StatefulWidget {
@@ -60,11 +61,37 @@ class _SearchTabState extends State<SearchTab> {
                 future: ApiService.getSearchResults(searchController.text),
                 builder: (context, snapshot) {
                   var resultsList = snapshot.data?.results ?? [];
+
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Padding(
                       padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.3),
-                      child: CircularProgressIndicator());
-                  } else if (resultsList.isEmpty) {
+                      child: const CircularProgressIndicator());
+                  }else if (snapshot.hasError) {
+                    return Column(children: [
+                      const Text('Something went wrong'),
+                      ElevatedButton(
+                          onPressed: () {
+                            ApiService.getSearchResults(searchController.text);
+                            setState(() {
+
+                            });
+                          },
+                          child: const Text('Try again'))
+                    ]);
+                  } else if (snapshot.data!.success == false) {
+                    return Column(children: [
+                      Text(snapshot.data!.statusMessage ?? ''),
+                      ElevatedButton(
+                          onPressed: () {
+                            ApiService.getSearchResults(searchController.text);
+                            setState(() {
+
+                            });
+                          },
+                          child: const Text('Try again'))
+                    ]);
+                  }
+                  else if (resultsList.isEmpty) {
                     return Padding(
                       padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.3),
                       child: Column(
@@ -84,7 +111,7 @@ class _SearchTabState extends State<SearchTab> {
                   else {
                     return ListView.separated(
                         // primary: false,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           return CategoryMovieItem(movie: resultsList[index]);

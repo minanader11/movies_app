@@ -19,7 +19,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> tabs=[const HomeTab(),const SearchTab(),const BrowseTab(),const WatchlistTab()];
+    List<Widget> tabs=[const HomeTab(),const SearchTab(),const BrowseTab(), WatchlistTab()];
     return Scaffold(
       bottomNavigationBar: Theme(data: Theme.of(context).copyWith(canvasColor: MyTheme.blackColor),
         child: BottomNavigationBar(currentIndex: selectedIndex,onTap: (value){

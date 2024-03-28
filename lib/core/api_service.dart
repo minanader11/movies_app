@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:movies_routee/core/api_constants.dart';
 import 'package:movies_routee/core/model/movie.dart';
 import 'package:movies_routee/core/model/movieCategory.dart';
+
 class ApiService{
   static Future<Movie> getPopularMovies()async {
     Uri url = Uri.https(ApiConstants.baseURl,ApiConstants.popular);
@@ -69,4 +70,5 @@ class ApiService{
       rethrow;
     }
   }
+
 }

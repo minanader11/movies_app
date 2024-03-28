@@ -3,9 +3,14 @@ import 'package:movies_routee/core/api_service.dart';
 import 'package:movies_routee/features/browse/view/presentation/widgets/category_grid_item.dart';
 
 
-class BrowseGrid extends StatelessWidget {
+class BrowseGrid extends StatefulWidget {
   const BrowseGrid({super.key});
 
+  @override
+  State<BrowseGrid> createState() => _BrowseGridState();
+}
+
+class _BrowseGridState extends State<BrowseGrid> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -21,6 +26,10 @@ class BrowseGrid extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   ApiService.getGenres();
+                  setState(() {
+
+                  });
+
                 },
                 child: const Text('Try again'))
           ]);
@@ -30,6 +39,9 @@ class BrowseGrid extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   ApiService.getGenres();
+                  setState(() {
+
+                  });
                 },
                 child: const Text('Try again'))
           ]);

@@ -7,4 +7,5 @@ class ApiConstants{
   static const String moviesByCategory='/3/discover/movie';
   static const String imagePath='https://image.tmdb.org/t/p/original/';
 
+
 }

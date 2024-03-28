@@ -13,6 +13,7 @@ class Movie {
     this.totalResults,
     this.statusCode,this.statusMessage,this.success});
 
+
   Movie.fromJson(dynamic json) {
     dates = json['dates'] != null ? Date.fromJson(json['dates']) : null;
     page = json['page'];

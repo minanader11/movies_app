@@ -18,74 +18,71 @@ class CategoryMovieItem extends StatelessWidget {
         : ApiConstants.imagePath + movie.backdropPath!;
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return InkWell(onTap: () {
-      },
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //MovieItem(movie: widget.movie, index: 0),
-          Container(clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-            child:/* Image.network(
-              imagePath,
-              height: height * 0.2,
-              width: width * 0.35,
-              fit: BoxFit.fill,
-            ),*/
-            CachedNetworkImage(
-              fit: BoxFit.fill,
-              height: height * 0.2,
-              width: width * 0.35,
-              imageUrl: imagePath,
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            ),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        //MovieItem(movie: widget.movie, index: 0),
+        Container(clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+          child:/* Image.network(
+            imagePath,
+            height: height * 0.2,
+            width: width * 0.35,
+            fit: BoxFit.fill,
+          ),*/
+          CachedNetworkImage(
+            fit: BoxFit.fill,
+            height: height * 0.2,
+            width: width * 0.35,
+            imageUrl: imagePath,
+            placeholder: (context, url) =>
+                const Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
-          //Image.asset(
-          //    'assets/images/movie.jpeg'),
-          const SizedBox(
-            width: 10,
+        ),
+        //Image.asset(
+        //    'assets/images/movie.jpeg'),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(movie.title ?? '',
+                  style: Theme.of(context).textTheme.bodyLarge),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(movie.releaseDate ?? '',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(color: MyTheme.grayColor)),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Icon(
+                    Icons.star_purple500_outlined,
+                    color: MyTheme.goldColor,
+                    size: 30,
+                  ),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                  Text(
+                    movie.voteAverage.toString() ?? '',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ],
+              ),
+            ],
           ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(movie.title ?? '',
-                    style: Theme.of(context).textTheme.bodyLarge),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(movie.releaseDate ?? '',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge!
-                        .copyWith(color: MyTheme.grayColor)),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Icon(
-                      Icons.star_purple500_outlined,
-                      color: MyTheme.goldColor,
-                      size: 30,
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Text(
-                      movie.voteAverage.toString() ?? '',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
     /*Row(
       children: [
